@@ -1,8 +1,51 @@
 @import "../shared/helper";
 
 .home {
-  header {
+  display: flex;
+  flex-direction: column;
+  //占满父元素
+  flex: 1;
+
+  > header {
     height: px(99);
     background-size: cover;
+  }
+
+  > main {
+    flex: 1;
+    display: grid;
+    /* grid 模板语法
+       grid-template:
+      "box1 box2 box4 box5" 高度 (单位为 fr（fraction，表示该行占据的比例）)
+      "box3 box3 box4 box5" 高度 / box3宽度 box3宽度 box4宽度 box5宽度
+     */
+    grid-template:
+      "box1 box2 box4 box5" 755fr
+      "box3 box3 box4 box5" 363fr / 366fr 361fr 811fr 747fr;
+
+    > .section1 {
+      grid-area: box1;
+      background: pink;
+    }
+
+    > .section2 {
+      grid-area: box2;
+      background: lightgray;
+    }
+
+    > .section3 {
+      grid-area: box3;
+      background: lightblue;
+    }
+
+    > .section4 {
+      grid-area: box4;
+      background: lightcyan;
+    }
+
+    > .section5 {
+      grid-area: box5;
+      background: lightyellow;
+    }
   }
 }
