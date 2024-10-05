@@ -107,12 +107,14 @@
         width: 100%;
       }
     }
+
     //破获排名
     .break-through-ranking {
       height: px(423);
       display: flex;
       flex-direction: column;
       align-items: center;
+
       h2 {
         flex-shrink: 0;
         border: 1px solid #0a5299;
@@ -123,23 +125,34 @@
         padding: px(10) px(28);
         text-shadow: 0 0 px(3) white;
       }
+
       .chart {
         flex: 1;
         width: 100%;
       }
+
       .legend {
         display: flex;
         align-items: center;
         justify-content: flex-end;
         width: 100%;
         padding: 0 px(20) px(10);
+
         > .first, > .second {
           display: inline-block;
-          width: px(18); height: px(12);
-          background: red; margin: 0 px(10);
+          width: px(18);
+          height: px(12);
+          background: red;
+          margin: 0 px(10);
         }
-        .first {}
-        .second {}
+
+        .first {
+          background: linear-gradient(90deg, #2034f9 0%, #04a1ff 100%);
+        }
+
+        .second {
+          background: linear-gradient(90deg, #b92ae8 0%, #6773e7 100%);
+        }
       }
     }
   }
