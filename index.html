@@ -8,7 +8,7 @@
     <script>
         const clientWith = document.documentElement.clientWidth
         const clientHeight = document.documentElement.clientHeight
-        const pageWidth = clientWith / clientHeight > (16 / 9) ? clientHeight * (16 / 9) : clientWith
+        window.pageWidth = clientWith / clientHeight > (16 / 9) ? clientHeight * (16 / 9) : clientWith
         const pageHeight = clientWith / (16 / 9)
         const html = document.querySelector('html')
         // 设置rem
