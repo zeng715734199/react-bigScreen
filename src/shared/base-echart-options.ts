@@ -1,7 +1,6 @@
 import {px} from './px';
 
 export const baseEchartOptions = {
-
     textStyle: {
         fontSize: px(12),
         color: '#79839E'
