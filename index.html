@@ -6,15 +6,16 @@
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
     <title>大屏可视化项目</title>
     <script>
-        const clientWith = document.documentElement.clientWidth
+        const clientWidth = document.documentElement.clientWidth
         const clientHeight = document.documentElement.clientHeight
-        window.pageWidth = clientWith / clientHeight > (16 / 9) ? clientHeight * (16 / 9) : clientWith
-        const pageHeight = clientWith / (16 / 9)
+        const pageWidth = clientWidth / clientHeight > (16 / 9) ? clientHeight * (16 / 9) : clientWidth
+        const pageHeight = pageWidth / (16 / 9)
+        window.pageWidth = pageWidth
         const html = document.querySelector('html')
         // 设置rem
         html.style.fontSize = pageWidth / 100 + 'px'
     </script>
-<script type="module" crossorigin src="/react-bigScreen/assets/index.203e796b.js"></script>
+<script type="module" crossorigin src="/react-bigScreen/assets/index.6f3b429f.js"></script>
   <link rel="modulepreload" href="/react-bigScreen/assets/vendor.9ae42ed8.js">
   <link rel="stylesheet" href="/react-bigScreen/assets/index.83e3bf6d.css">
 </head>
