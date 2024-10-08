@@ -20,7 +20,10 @@ export const Chart11 = () => {
                     radius: ['25%', '90%'],
                     avoidLabelOverlap: false,
                     label: {
-                        show: true, position: 'outside', textStyle: {color: 'white', fontSize: px(20)},
+                        show: true,
+                        position: 'outside',
+                        color: 'white',
+                        fontSize: px(20),
                         distanceToLabelLine: 0,
                         formatter(options) {
                             return options.value * 100 + '%';

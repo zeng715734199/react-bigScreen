@@ -20,7 +20,10 @@ export const Chart8 = () => {
                     radius: ['75%', '90%'],
                     avoidLabelOverlap: false,
                     label: {
-                        show: true, position: 'inside', textStyle: {color: 'white', fontSize: px(20)},
+                        show: true,
+                        position: 'inside',
+                        color: 'white',
+                        fontSize: px(20),
                         formatter(options) {
                             return (options.value * 100).toFixed(0) + '%';
                         }
@@ -49,11 +52,11 @@ export const Chart8 = () => {
                 <div className="text">年龄段</div>
             </div>
             <div className="legend">
-                <span style={{background: colors[0]}} />10-20
-                <span style={{background: colors[1]}} />20-30
-                <span style={{background: colors[2]}} />30-40
-                <span style={{background: colors[3]}} />40-50
-                <span style={{background: colors[4]}} />50-60
+                <span style={{background: colors[0]}}/>10-20
+                <span style={{background: colors[1]}}/>20-30
+                <span style={{background: colors[2]}}/>30-40
+                <span style={{background: colors[3]}}/>40-50
+                <span style={{background: colors[4]}}/>50-60
             </div>
         </div>
     );
