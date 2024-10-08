@@ -6,10 +6,11 @@
           content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
     <title>大屏可视化项目</title>
     <script>
-        const clientWith = document.documentElement.clientWidth
+        const clientWidth = document.documentElement.clientWidth
         const clientHeight = document.documentElement.clientHeight
-        window.pageWidth = clientWith / clientHeight > (16 / 9) ? clientHeight * (16 / 9) : clientWith
-        const pageHeight = clientWith / (16 / 9)
+        const pageWidth = clientWidth / clientHeight > (16 / 9) ? clientHeight * (16 / 9) : clientWidth
+        const pageHeight = pageWidth / (16 / 9)
+        window.pageWidth = pageWidth
         const html = document.querySelector('html')
         // 设置rem
         html.style.fontSize = pageWidth / 100 + 'px'
