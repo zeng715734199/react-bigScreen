@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport"
+          content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+    <title>大屏可视化项目</title>
+    <script>
+        const clientWith = document.documentElement.clientWidth
+        const clientHeight = document.documentElement.clientHeight
+        window.pageWidth = clientWith / clientHeight > (16 / 9) ? clientHeight * (16 / 9) : clientWith
+        const pageHeight = clientWith / (16 / 9)
+        const html = document.querySelector('html')
+        // 设置rem
+        html.style.fontSize = pageWidth / 100 + 'px'
+    </script>
+<script type="module" crossorigin src="/assets/index.731d5b7f.js"></script>
+  <link rel="modulepreload" href="/assets/vendor.9ae42ed8.js">
+  <link rel="stylesheet" href="/assets/index.83e3bf6d.css">
+</head>
+<body>
+<div id="root"></div>
+<script>
+    // root.style.width = pageWidth + 'px'
+    root.style.height = pageHeight + 'px'
+    root.style.marginTop = (clientHeight - pageHeight) / 2 + 'px'
+</script>
+
+</body>
+</html>
