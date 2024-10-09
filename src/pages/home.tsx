@@ -66,7 +66,7 @@ export const Home = () => {
                 </section>
             </main>
             <footer>
-                &copy; zlh-big-screen-demo 2020-{year}
+                &copy; zlh-big-screen-demo 2023-{year} (此项目仅供学习参考)
             </footer>
         </div>
     );
