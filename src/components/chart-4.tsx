@@ -2,12 +2,17 @@ import React, {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
 import {createEchartsOptions} from '../shared/create-echarts-options';
 import {px} from '../shared/px';
+import {mockFloatList, mockNumList} from "../shared/utils";
 
 export const Chart4 = () => {
-    const divRef = useRef(null);
-    useEffect(() => {
-        const myChart = echarts.init(divRef.current);
-        myChart.setOption(createEchartsOptions({
+    const divRef = useRef<HTMLDivElement | null>(null);
+    const chartRef = useRef<echarts.ECharts>(null);
+    setInterval(async () => {
+        const {list} = await mockFloatList()
+        updateChart(list)
+    }, 1000)
+    const updateChart = (data: number[]) => {
+        chartRef.current?.setOption(createEchartsOptions({
             xAxis: {
                 type: 'category',
                 boundaryGap: false,
@@ -27,13 +32,7 @@ export const Chart4 = () => {
             },
             series: [{
                 type: 'line',
-                data: [
-                    0.15, 0.13, 0.11,
-                    0.13, 0.14, 0.15,
-                    0.16, 0.18, 0.21,
-                    0.19, 0.17, 0.16,
-                    0.15
-                ],
+                data,
                 symbol: 'circle',
                 symbolSize: px(12),
                 lineStyle: {width: px(2)},
@@ -48,6 +47,14 @@ export const Chart4 = () => {
                 }
             }]
         }));
+
+    }
+    useEffect(() => {
+        mockFloatList().then(({list}) => {
+            chartRef.current = echarts.init(divRef.current);
+            updateChart(list)
+
+        })
     }, []);
 
     return (

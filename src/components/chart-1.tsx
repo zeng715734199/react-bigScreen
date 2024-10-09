@@ -1,12 +1,17 @@
 import React, {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
 import {px} from "../shared/px";
+import {mockNumList} from "../shared/utils";
 
 export const Chart1 = () => {
-    const divRef = useRef(null);
-    useEffect(() => {
-        const myChart = echarts.init(divRef.current);
-        myChart.setOption({
+    const divRef = useRef<HTMLDivElement | null>(null);
+    const chartRef = useRef<echarts.ECharts>(null)
+    setInterval(async () => {
+        const {list} = await mockNumList()
+        updateChart(list)
+    }, 1000)
+    const updateChart = (data: number[]) => {
+        chartRef.current?.setOption({
             textStyle: {
                 fontSize: px(12),
                 color: '#79839E'
@@ -21,7 +26,7 @@ export const Chart1 = () => {
                 },
                 axisLabel: {
                     fontSize: px(12),
-                    formatter(val) {
+                    formatter(val: string) {
                         if (val.length > 2) {
                             const array = val.split('');
                             array.splice(2, 0, '\n');
@@ -33,10 +38,10 @@ export const Chart1 = () => {
                 },
             },
             grid: {
-                x: px(40),
-                y: px(40),
-                x2: px(40),
-                y2: px(40),
+                x: px(70),
+                y: px(70),
+                x2: px(70),
+                y2: px(70),
             },
             yAxis: {
                 splitLine: {show: false},
@@ -50,11 +55,16 @@ export const Chart1 = () => {
             },
             series: [{
                 type: 'bar',
-                data: [10, 20, 36, 41, 15, 26, 37, 18, 29]
+                data
             }]
         });
+    }
+    useEffect(() => {
+        mockNumList().then(({list}) => {
+            chartRef.current = echarts.init(divRef.current);
+            updateChart(list)
+        })
     }, []);
-
     return (
         <div className="bordered 管辖统计">
             <h2>案发派出所管辖统计</h2>

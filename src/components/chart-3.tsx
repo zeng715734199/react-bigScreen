@@ -2,12 +2,17 @@ import React, {useEffect, useRef} from 'react';
 import * as echarts from 'echarts';
 import {createEchartsOptions} from '../shared/create-echarts-options';
 import {px} from '../shared/px';
+import {mockLineObj, mockNumListObj} from "../shared/utils";
 
 export const Chart3 = () => {
-    const divRef = useRef(null);
-    useEffect(() => {
-        const myChart = echarts.init(divRef.current);
-        myChart.setOption(createEchartsOptions({
+    const divRef = useRef<HTMLDivElement | null>(null);
+    const chartRef = useRef<echarts.ECharts>(null)
+    setInterval(async () => {
+        const {data} = await mockLineObj()
+        updateChart(data)
+    }, 1000)
+    const updateChart = (data: Record<string, number[]>) => {
+        chartRef.current?.setOption(createEchartsOptions({
             legend: {
                 bottom: px(10),
                 textStyle: {color: 'white'},
@@ -33,7 +38,7 @@ export const Chart3 = () => {
                 type: 'value',
                 splitLine: {lineStyle: {color: '#073E78'}},
                 axisLabel: {
-                    formatter(val) {
+                    formatter(val: number) {
                         return val * 100 + '%';
                     }
                 }
@@ -42,28 +47,28 @@ export const Chart3 = () => {
                 {
                     name: '抢劫',
                     type: 'line',
-                    data: [0.01, 0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09].reverse()
+                    data: data['rob']
                 },
                 {
                     name: '醉驾',
                     type: 'line',
-                    data: [0.02, 0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.10].reverse()
+                    data: data['dui']
                 },
                 {
                     name: '盗窃',
                     type: 'line',
-                    data: [0.03, 0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.10, 0.11].reverse()
+                    data: data['steal']
                 },
                 {
                     name: '故意杀人',
                     type: 'line',
-                    data: [0.04, 0.05, 0.06, 0.07, 0.08, 0.09, 0.10, 0.11, 0.12].reverse()
+                    data: data['kill']
                 },
 
                 {
                     name: '故意伤人',
                     type: 'line',
-                    data: [0.05, 0.06, 0.07, 0.08, 0.09, 0.10, 0.11, 0.12, 0.13].reverse()
+                    data: data['wound']
                 }
             ].map(obj => ({
                 ...obj,
@@ -72,6 +77,13 @@ export const Chart3 = () => {
                 lineStyle: {width: px(2)}
             }))
         }));
+    }
+    useEffect(() => {
+        mockLineObj().then(({data}) => {
+            chartRef.current = echarts.init(divRef.current);
+            updateChart(data)
+        })
+
     }, []);
 
     return (
