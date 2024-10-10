@@ -1,4 +1,4 @@
-# 大屏数据展示
+# React大屏数据展示
 
 ## 使用代码
 
@@ -8,10 +8,16 @@
 yarn dev
 ```
 
+打包
+
+```bash
+yarn dev
+```
+
 部署
 
 ```bash
-yarn build
+yarn deploy
 ```
 
 预览
