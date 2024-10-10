@@ -46,7 +46,7 @@ export const Chart8 = () => {
     }, []);
 
     return (
-        <div className="年龄段-图2">
+        <div className="年龄段-subChart2">
             <div className="chart">
                 <div className="main" ref={divRef}/>
                 <div className="text">年龄段</div>

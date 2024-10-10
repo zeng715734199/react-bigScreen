@@ -198,13 +198,13 @@
         padding: px(30);
       }
 
-      &-图1, &-图2, &-图3 {
+      &-subChart1, &-subChart2, &-subChart3 {
         flex: 1;
         display: flex;
         flex-direction: column;
       }
 
-      &-图1, &-图2 {
+      &-subChart1, &-subChart2 {
         .legend {
           @extend %legend;
 
@@ -246,7 +246,7 @@
         }
       }
 
-      &-图2 {
+      &-subChart2 {
         width: px(290);
         flex-shrink: 0;
 
@@ -255,7 +255,7 @@
         }
       }
 
-      &-图3 {
+      &-subChart3 {
         h3 {
           font-size: px(20);
           color: #7ab6db;
